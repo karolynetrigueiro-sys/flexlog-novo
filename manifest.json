@@ -1,0 +1,10 @@
+{
+  "name": "FlexLog",
+  "short_name": "FlexLog",
+  "description": "Rastreamento de encomendas",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#123b70",
+  "icons": []
+}
