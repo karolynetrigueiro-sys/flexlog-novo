@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123b70">
+<title>FlexLog Transportadora</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  color: #202124;
+}
+
+.topbar {
+  background: #123b70;
+  color: white;
+  padding: 20px;
+}
+
+.topbar h2 {
+  font-size: 21px;
+}
+
+.container {
+  max-width: 650px;
+  margin: 28px auto;
+  padding: 18px;
+}
+
+.app {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 2px 12px #00000010;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.logo {
+  width: 75px;
+  height: 75px;
+  border-radius: 18px;
+  background: #123b70;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.app-header h1 {
+  font-size: 21px;
+  margin-bottom: 7px;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.section {
+  margin-top: 25px;
+  border-top: 1px solid #e8e8e8;
+  padding-top: 22px;
+}
+
+.section h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.section p {
+  color: #60646c;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.input-area {
+  margin-top: 18px;
+}
+
+.input-area label {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #cbd2dc;
+  border-radius: 9px;
+  font-size: 16px;
+  outline-color: #1769aa;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 13px;
+  border: none;
+  border-radius: 9px;
+  background: #1769aa;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  opacity: 0.85;
+}
+
+.result {
+  display: none;
+  margin-top: 22px;
+  padding: 22px 12px;
+  background: #fff8e7;
+  border: 1px solid #f0d28b;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.result h3 {
+  color: #9a6500;
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+
+.result p {
+  color: #87651f;
+  font-size: 12px;
+}
+
+.error {
+  display: none;
+  color: #c62828;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.demo {
+  margin-top: 18px;
+  text-align: center;
+  color: #777;
+  font-size: 12px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #777;
+  font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <h2>FlexLog Transportadora</h2>
+</header>
+
+<main class="container">
+  <section class="app">
+
+    <div class="app-header">
+      <div class="logo">FL</div>
+      <div>
+        <h1>FlexLog Transportadora</h1>
+        <p class="subtitle">Transporte de equipamentos</p>
+        <p class="subtitle">Consulta de demonstração</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Sobre nosso trabalho</h3>
+      <p>
+        Uma experiência demonstrativa de consulta,
+        com interface simples e prática.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Consultar código</h3>
+      <p>Digite seu código único para realizar a consulta.</p>
+
+      <div class="input-area">
+        <label for="codigo">Código de consulta</label>
+        <input
+          id="codigo"
+          type="text"
+          placeholder="Digite seu código"
+          autocomplete="off"
+        >
+
+        <button onclick="consultar()">Consultar</button>
+
+        <div class="error" id="erro">
+          Código não reconhecido.
+        </div>
+
+        <div class="result" id="resultado">
+          <h3>Emitindo nota fiscal</h3>
+          <p>Status fictício para fins de demonstração.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="demo">
+      Ambiente demonstrativo fictício.
+      Não representa uma consulta fiscal ou logística real.
+    </p>
+
+  </section>
+</main>
+
+<footer>
+  FlexLog Transportadora — Demonstração
+</footer>
+
+<script>
+function consultar() {
+  const codigo = document
+    .getElementById("codigo")
+    .value.trim()
+    .toUpperCase();
+
+  const resultado = document.getElementById("resultado");
+  const erro = document.getElementById("erro");
+
+  resultado.style.display = "none";
+  erro.style.display = "none";
+
+  if (codigo === "BR354790239") {
+    resultado.style.display = "block";
+  } else {
+    erro.style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>
