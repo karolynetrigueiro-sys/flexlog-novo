@@ -4,331 +4,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071426">
-<title>FlexLog | Rastreamento e Logística</title>
+<meta name="theme-color" content="#071a33">
+<title>FlexLog | Rastreamento</title>
+
 <style>
-:root {
-  --bg:#071426;
-  --panel:#10243b;
-  --blue:#1479d4;
-  --cyan:#25c5d9;
-  --white:#f5f8fc;
-  --muted:#a8b8ca;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+*{box-sizing:border-box}
 body{
+ margin:0;
  font-family:Arial,sans-serif;
- background:#09182a;
- color:var(--white);
- line-height:1.6;
+ background:#f2f5fa;
+ color:#15243a;
 }
-a{color:inherit;text-decoration:none}
-.container{width:min(1120px,92%);margin:auto}
 header{
- background:#071426;
- border-bottom:1px solid #20344b;
- position:sticky;top:0;z-index:10;
+ background:#071a33;
+ color:white;
+ padding:25px 20px;
 }
-nav{
- min-height:75px;display:flex;align-items:center;
- justify-content:space-between;gap:15px;
+.container{
+ max-width:650px;
+ margin:auto;
 }
-.logo{font-size:27px;font-weight:800;color:white}
-.logo span{color:var(--cyan)}
-.links{display:flex;gap:20px;flex-wrap:wrap;font-size:13px}
-.links a:hover{color:var(--cyan)}
-.hero{padding:90px 0;background:
- radial-gradient(ellipse at 80% 20%,#15436a 0%,transparent 55%),
- linear-gradient(120deg,#071426,#102c48)}
-.hero-content{max-width:720px}
-.tag{color:var(--cyan);font-weight:bold;font-size:13px}
-h1{font-size:clamp(34px,6vw,58px);line-height:1.12;margin:15px 0}
-h2{font-size:32px;margin-bottom:12px}
-p{color:var(--muted)}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-.btn{
- display:inline-block;padding:13px 22px;border:0;
- border-radius:8px;background:var(--blue);
- color:white;font-weight:bold;cursor:pointer;
+.logo{
+ font-size:27px;
+ font-weight:bold;
+ color:#45b4ff;
 }
-.btn.secondary{background:transparent;border:1px solid #66819c}
-.btn:hover{filter:brightness(1.15)}
-section{padding:75px 0}
-.section-head{margin-bottom:30px}
-.section-head p{max-width:650px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+header p{color:#c4d2e5}
+main{padding:35px 18px}
 .card{
- background:var(--panel);border:1px solid #263e57;
- border-radius:13px;padding:23px;
+ background:white;
+ padding:25px;
+ border-radius:16px;
+ box-shadow:0 5px 25px #14243a12;
 }
-.card h3{margin:10px 0}
-.number{font-size:13px;color:var(--cyan);font-weight:bold}
-.icon{font-size:28px}
-.services{grid-template-columns:repeat(2,1fr)}
-.tracking{
- background:linear-gradient(145deg,#102b46,#0a1b30);
- border:1px solid #294b68;border-radius:16px;
- padding:28px;max-width:760px;
+h1{font-size:25px;margin-top:0}
+input{
+ width:100%;
+ padding:16px;
+ border:1px solid #d5dce7;
+ border-radius:9px;
+ font-size:16px;
+ margin:15px 0;
 }
-.tracking form{display:flex;gap:10px;margin:22px 0}
-input,textarea{
- width:100%;padding:14px;border-radius:8px;
- background:#071426;color:white;border:1px solid #38536d;
- font-size:15px;outline:none;
+button{
+ width:100%;
+ background:#087cf0;
+ color:white;
+ border:0;
+ padding:16px;
+ border-radius:9px;
+ font-size:16px;
+ font-weight:bold;
+ cursor:pointer;
 }
-input:focus,textarea:focus{border-color:var(--cyan)}
-.result{
- display:none;margin-top:22px;padding:20px;
- border-radius:12px;background:#071426;
-}
-.result.show{display:block}
+button:active{opacity:.8}
+#resultado{display:none;margin-top:25px}
 .status{
- display:inline-block;padding:6px 12px;
- border-radius:30px;background:#174c56;
- color:#73e6dc;font-size:13px;margin:10px 0;
+ background:#eaf4ff;
+ color:#0871d9;
+ padding:14px;
+ border-radius:9px;
+ font-weight:bold;
 }
-.route{
- display:grid;grid-template-columns:1fr 1fr 1fr;
- gap:12px;margin:20px 0;text-align:center;
+.evento{
+ border-left:3px solid #087cf0;
+ padding:5px 0 18px 17px;
+ margin-left:7px;
 }
-.route div{padding:12px;background:#10243b;border-radius:9px}
-.timeline{margin-top:25px}
-.step{padding:12px 15px;border-left:3px solid #38536d;margin:0 0 8px 8px}
-.step.active{border-color:var(--cyan)}
-.step strong{display:block}
-.contact-form{max-width:650px;display:grid;gap:12px}
-footer{background:#050f1c;padding:35px 0}
-.footer-content{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-small{color:#8497aa}
-@media(max-width:750px){
- nav{padding:15px 0;align-items:flex-start;flex-direction:column}
- .links{gap:12px}
- .hero{padding:65px 0}
- .grid{grid-template-columns:1fr 1fr}
- .services{grid-template-columns:1fr}
- .tracking form{flex-direction:column}
-}
-@media(max-width:430px){
- .grid{grid-template-columns:1fr}
- .route{grid-template-columns:1fr}
- h2{font-size:27px}
+.evento:last-child{border-left-color:transparent}
+.evento strong{display:block;margin-bottom:5px}
+.evento small{color:#75849a}
+.erro{color:#d32f2f;margin-top:15px}
+footer{
+ text-align:center;
+ color:#8290a3;
+ padding:25px;
+ font-size:13px;
 }
 </style>
 </head>
+
 <body>
 
 <header>
- <nav class="container">
-  <a class="logo" href="#inicio">Flex<span>Log</span></a>
-  <div class="links">
-   <a href="#inicio">Início</a>
-   <a href="#sobre">Sobre nós</a>
-   <a href="#servicos">Serviços</a>
-   <a href="#rastreamento">Rastreamento</a>
-   <a href="#diferenciais">Diferenciais</a>
-   <a href="#contato">Contato</a>
-  </div>
- </nav>
+ <div class="container">
+  <div class="logo">FlexLog</div>
+  <p>Seu objeto, acompanhado em cada etapa.</p>
+ </div>
 </header>
 
 <main>
-<section class="hero" id="inicio">
- <div class="container hero-content">
-  <span class="tag">ESPECIALISTAS EM CARGA REFRIGERADA</span>
-  <h1>Transporte especializado em equipamentos de refrigeração</h1>
-  <p>Logística eficiente, segurança e compromisso em cada entrega.</p>
-  <div class="actions">
-   <a class="btn" href="#rastreamento">Rastrear encomenda</a>
-   <a class="btn secondary" href="#sobre">Conheça a FlexLog</a>
-  </div>
-  <p style="margin-top:35px">✓ Rota planejada ponto a ponto<br>
-  ✓ Carga com manuseio especializado<br>
-  ✓ Acompanhamento de entregas<br>
-  ✓ Organização documental</p>
- </div>
-</section>
+<div class="container">
+ <div class="card">
+  <h1>Rastreie sua encomenda</h1>
+  <p>Digite seu código de rastreamento para consultar a situação do objeto.</p>
 
-<section id="sobre">
- <div class="container">
-  <div class="section-head">
-   <span class="tag">QUEM SOMOS</span>
-   <h2>Logística que conecta negócios</h2>
-   <p>A FlexLog é especializada no transporte de equipamentos de refrigeração, oferecendo soluções logísticas eficientes, seguras e planejadas para empresas que precisam movimentar seus equipamentos com confiança e agilidade.</p>
-  </div>
-  <div class="grid">
-   <article class="card"><div class="icon">🛡️</div><h3>Segurança</h3><p>Transporte planejado para garantir a integridade dos equipamentos.</p></article>
-   <article class="card"><div class="icon">⚡</div><h3>Agilidade</h3><p>Operações eficientes para otimizar prazos e entregas.</p></article>
-   <article class="card"><div class="icon">📦</div><h3>Especialização</h3><p>Experiência direcionada ao transporte de equipamentos.</p></article>
-   <article class="card"><div class="icon">🤝</div><h3>Confiabilidade</h3><p>Compromisso com cada etapa da operação logística.</p></article>
-  </div>
- </div>
-</section>
+  <input
+   id="codigo"
+   type="text"
+   placeholder="Digite seu código de rastreamento"
+   autocomplete="off"
+  >
 
-<section id="servicos" style="background:#0b2035">
- <div class="container">
-  <div class="section-head">
-   <span class="tag">O QUE FAZEMOS</span>
-   <h2>Nossas soluções</h2>
-   <p>Serviços pensados para cada etapa do transporte de equipamentos de refrigeração.</p>
-  </div>
-  <div class="grid services">
-   <article class="card"><span class="number">01</span><h3>Transporte de equipamentos</h3><p>Transporte especializado para equipamentos e soluções de refrigeração.</p></article>
-   <article class="card"><span class="number">02</span><h3>Logística dedicada</h3><p>Operações planejadas de acordo com as necessidades de cada cliente.</p></article>
-   <article class="card"><span class="number">03</span><h3>Coletas e entregas</h3><p>Processos organizados para garantir maior eficiência logística.</p></article>
-   <article class="card"><span class="number">04</span><h3>Transporte especializado</h3><p>Movimentação segura de equipamentos que exigem atenção e cuidado.</p></article>
-  </div>
- </div>
-</section>
+  <button onclick="rastrear()">Consultar encomenda</button>
 
-<section id="rastreamento">
- <div class="container">
-  <div class="section-head">
-   <span class="tag">ACOMPANHE SEU PEDIDO</span>
-   <h2>Rastreie sua encomenda</h2>
-   <p>Acompanhe sua entrega em poucos segundos.</p>
-  </div>
-  <div class="tracking">
-   <form id="trackForm">
-    <input id="trackingCode" placeholder="Digite seu código de rastreio" required autocomplete="off">
-    <button class="btn" type="submit">Rastrear encomenda</button>
-   </form>
-   <p style="font-size:12px">Digite o código recebido para consultar o andamento.</p>
-   <div class="result" id="result">
-    <h3>Informações da encomenda</h3>
-    <p>Código: <strong id="outCode"></strong></p>
-    <p>Transportadora: FlexLog</p>
-    <span class="status" id="outStatus"></span>
-    <div class="route">
-     <div><small>ORIGEM</small><br><strong id="outOrigin"></strong></div>
-     <div><small>STATUS ATUAL</small><br><strong id="outRouteStatus"></strong></div>
-     <div><small>DESTINO</small><br><strong id="outDestination"></strong></div>
-    </div>
-    <h3>Histórico de movimentação</h3>
-    <div class="timeline" id="timeline"></div>
-    <p style="font-size:11px;margin-top:18px">Consulta demonstrativa. Os eventos não representam movimentações reais.</p>
-   </div>
-  </div>
- </div>
-</section>
+  <div id="erro" class="erro"></div>
 
-<section id="diferenciais" style="background:#0b2035">
- <div class="container">
-  <div class="section-head">
-   <span class="tag">NOSSO COMPROMISSO</span>
-   <h2>Por que escolher a FlexLog?</h2>
-  </div>
-  <div class="grid">
-   <article class="card"><h3>🛡️ Segurança</h3><p>Cuidado em cada etapa do transporte.</p></article>
-   <article class="card"><h3>⚡ Eficiência</h3><p>Processos planejados para maior agilidade.</p></article>
-   <article class="card"><h3>💻 Tecnologia</h3><p>Acompanhamento e organização logística.</p></article>
-   <article class="card"><h3>🤝 Compromisso</h3><p>Responsabilidade com cada equipamento transportado.</p></article>
-  </div>
- </div>
-</section>
+  <div id="resultado">
+   <h2>Detalhes da encomenda</h2>
+   <div class="status" id="situacao"></div>
+   <p id="destino"></p>
 
-<section id="etapas">
- <div class="container">
-  <div class="section-head">
-   <span class="tag">NOSSO PROCESSO</span>
-   <h2>Do ponto de origem ao destino</h2>
-  </div>
-  <div class="grid">
-   <article class="card"><span class="number">01</span><h3>Emissão da nota fiscal</h3><p>Documentação preparada antes da movimentação.</p></article>
-   <article class="card"><span class="number">02</span><h3>Coleta</h3><p>Retirada do equipamento no ponto de origem.</p></article>
-   <article class="card"><span class="number">03</span><h3>Transporte</h3><p>Deslocamento planejado até o destino.</p></article>
-   <article class="card"><span class="number">04</span><h3>Entrega</h3><p>Entrega concluída com segurança.</p></article>
+   <h3>Histórico de movimentação</h3>
+   <div id="historico"></div>
   </div>
  </div>
-</section>
-
-<section id="contato" style="background:#0b2035">
- <div class="container">
-  <span class="tag">FALE CONOSCO</span>
-  <h2>Fale com a FlexLog</h2>
-  <p style="margin-bottom:25px">Precisa transportar equipamentos de refrigeração? Entre em contato com nossa equipe.</p>
-  <form class="contact-form" id="contactForm">
-   <input placeholder="Nome" required>
-   <input placeholder="Empresa">
-   <input type="email" placeholder="E-mail" required>
-   <input type="tel" placeholder="Telefone">
-   <textarea rows="5" placeholder="Mensagem" required></textarea>
-   <button class="btn" type="submit">Preparar mensagem</button>
-  </form>
-  <p id="contactMessage" style="margin-top:12px"></p>
- </div>
-</section>
+</div>
 </main>
 
 <footer>
- <div class="container footer-content">
-  <div><a class="logo" href="#inicio">Flex<span>Log</span></a><p>Transporte de equipamentos de refrigeração.</p></div>
-  <div><strong>Navegação</strong><p><a href="#inicio">Início</a> · <a href="#servicos">Serviços</a> · <a href="#rastreamento">Rastreamento</a> · <a href="#contato">Contato</a></p></div>
- </div>
- <div class="container" style="margin-top:25px"><small>© 2026 FlexLog. Todos os direitos reservados.</small></div>
+ FlexLog © 2026 - Sistema demonstrativo de rastreamento.
 </footer>
 
 <script>
-// Códigos demonstrativos cadastrados.
-// Para adicionar outro código, copie o modelo abaixo.
 const encomendas = {
  "BR354790239": {
-  origem:"Vila Liviero, São Paulo - SP",
-  destino:"Destino cadastrado",
-  status:"Emitindo a nota fiscal",
-  etapa:0
- },
- "BR35318887": {
-  origem:"Vila Liviero, São Paulo - SP",
-  destino:"Em rota de definição",
-  status:"Emitindo a nota fiscal",
-  etapa:0
+  situacao:"Objeto em trânsito",
+  destino:"Destino: Unidade de distribuição",
+  eventos:[
+   {
+    titulo:"Objeto recebido",
+    data:"09/11/2026 - 09:30",
+    local:"Centro de distribuição"
+   },
+   {
+    titulo:"Objeto em trânsito",
+    data:"09/11/2026 - 14:20",
+    local:"Transferência entre unidades"
+   }
+  ]
  }
 };
 
-const etapas = [
- ["Emitindo a nota fiscal","Pedido em processo de emissão da nota fiscal."],
- ["Nota fiscal emitida","Documentação fiscal emitida."],
- ["Equipamento coletado","Equipamento retirado no ponto de origem."],
- ["Em transporte","Equipamento encaminhado para transporte."],
- ["Em rota de entrega","Equipamento a caminho do destino."],
- ["Entregue","Entrega concluída."]
-];
+function rastrear(){
+ const codigo=document.getElementById("codigo").value
+ .trim().toUpperCase();
 
-document.getElementById("trackForm").addEventListener("submit",function(e){
- e.preventDefault();
- const code=document.getElementById("trackingCode").value.trim().toUpperCase();
- const item=encomendas[code];
- const result=document.getElementById("result");
+ const resultado=document.getElementById("resultado");
+ const erro=document.getElementById("erro");
 
- if(!item){
-  result.classList.add("show");
-  result.innerHTML="<h3>Código não encontrado</h3><p>Verifique o código digitado e tente novamente.</p>";
+ resultado.style.display="none";
+ erro.textContent="";
+
+ if(!codigo){
+  erro.textContent="Digite um código para consultar.";
   return;
  }
 
- document.getElementById("outCode").textContent=code;
- document.getElementById("outStatus").textContent=item.status;
- document.getElementById("outRouteStatus").textContent=item.status;
- document.getElementById("outOrigin").textContent=item.origem;
- document.getElementById("outDestination").textContent=item.destino;
+ const objeto=encomendas[codigo];
 
- document.getElementById("timeline").innerHTML=etapas.map((step,i)=>`
-  <div class="step ${i<=item.etapa?'active':''}">
-   <strong>${step[0]}</strong><small>${step[1]}</small>
+ if(!objeto){
+  erro.textContent="Código não encontrado. Verifique e tente novamente.";
+  return;
+ }
+
+ document.getElementById("situacao").textContent=objeto.situacao;
+ document.getElementById("destino").textContent=objeto.destino;
+
+ document.getElementById("historico").innerHTML=
+ objeto.eventos.map(evento=>`
+  <div class="evento">
+   <strong>${evento.titulo}</strong>
+   <small>${evento.data}</small>
+   <p>${evento.local}</p>
   </div>
  `).join("");
 
- result.classList.add("show");
- result.scrollIntoView({behavior:"smooth",block:"nearest"});
-});
-
-document.getElementById("contactForm").addEventListener("submit",function(e){
- e.preventDefault();
- document.getElementById("contactMessage").textContent=
- "Formulário demonstrativo: para enviar mensagens, é necessário conectar um serviço de contato.";
-});
+ resultado.style.display="block";
+}
 </script>
+
 </body>
 </html>
-  
