@@ -3,186 +3,154 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071a33">
-<title>FlexLog | Rastreamento</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#c9d8e2">
+<title>FlexLog | Transporte Especializado</title>
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f2f5fa;
- color:#15243a;
-}
-header{
- background:#071a33;
- color:white;
- padding:25px 20px;
-}
-.container{
- max-width:650px;
- margin:auto;
-}
-.logo{
- font-size:27px;
- font-weight:bold;
- color:#45b4ff;
-}
-header p{color:#c4d2e5}
-main{padding:35px 18px}
-.card{
- background:white;
- padding:25px;
- border-radius:16px;
- box-shadow:0 5px 25px #14243a12;
-}
-h1{font-size:25px;margin-top:0}
-input{
- width:100%;
- padding:16px;
- border:1px solid #d5dce7;
- border-radius:9px;
- font-size:16px;
- margin:15px 0;
-}
-button{
- width:100%;
- background:#087cf0;
- color:white;
- border:0;
- padding:16px;
- border-radius:9px;
- font-size:16px;
- font-weight:bold;
- cursor:pointer;
-}
-button:active{opacity:.8}
-#resultado{display:none;margin-top:25px}
-.status{
- background:#eaf4ff;
- color:#0871d9;
- padding:14px;
- border-radius:9px;
- font-weight:bold;
-}
-.evento{
- border-left:3px solid #087cf0;
- padding:5px 0 18px 17px;
- margin-left:7px;
-}
-.evento:last-child{border-left-color:transparent}
-.evento strong{display:block;margin-bottom:5px}
-.evento small{color:#75849a}
-.erro{color:#d32f2f;margin-top:15px}
-footer{
- text-align:center;
- color:#8290a3;
- padding:25px;
- font-size:13px;
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,sans-serif;color:#fff;background:#071b32}
+header{background:#c9d8e2;color:#09213c;padding:18px 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{font-size:30px;font-weight:800;display:flex;align-items:center;gap:12px}
+.mark{background:#092c50;color:#42c8f2;padding:10px;border-radius:5px;font-size:17px}
+nav{display:flex;gap:22px}
+nav a{color:#102b47;text-decoration:none;font-weight:bold}
+.menu{display:none;font-size:28px;background:none;color:#09213c;border:0;width:auto;padding:0}
+.hero{padding:85px 5% 65px;background-color:#071b32;background-image:linear-gradient(#ffffff09 1px,transparent 1px),linear-gradient(90deg,#ffffff09 1px,transparent 1px);background-size:94px 94px}
+.container{max-width:1120px;margin:auto}
+.tag{display:inline-block;border:1px solid #27647b;background:#123b55;padding:13px 20px;border-radius:40px;color:#66d5f0;font-weight:bold}
+h1{font-size:clamp(38px,7vw,65px);line-height:1.08;max-width:800px;margin:35px 0}
+.hero p{font-size:clamp(19px,3vw,27px);line-height:1.6;color:#b5c7d9;max-width:650px}
+.actions{display:flex;gap:15px;flex-wrap:wrap;margin:35px 0 65px}
+.btn{display:inline-block;text-decoration:none;border-radius:50px;padding:20px 32px;font-size:18px;font-weight:bold}
+.primary{background:#16addb;color:white;box-shadow:0 8px 25px #00b8eb40}
+.secondary{border:2px solid #52667b;color:white}
+.highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.highlight{border-left:3px solid #28bce1;padding:10px 20px}
+.highlight strong{font-size:21px}
+.highlight p{font-size:16px;margin:12px 0}
+section{padding:75px 5%}
+.light{background:#f1f5f9;color:#102944}
+h2{font-size:34px;margin-top:0}
+.subtitle{color:#a9bbcf;line-height:1.7}
+.light .subtitle{color:#61748a}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.card{background:#102c49;border:1px solid #244661;border-radius:15px;padding:25px}
+.light .card{background:white;border:1px solid #dce5ee}
+.card h3{font-size:21px}
+.card p{color:#b6c6d7;line-height:1.6}
+.light .card p{color:#64758a}
+.track{max-width:700px;margin:30px auto;background:white;color:#102944;padding:30px;border-radius:18px}
+.track button{background:#13aeda;color:white;border:0;border-radius:10px;padding:16px;width:100%;font-size:17px;font-weight:bold}
+.result{display:none;margin-top:25px}
+.status{padding:15px;background:#e5f6fc;border-radius:10px;color:#087ba3;font-weight:bold}
+.event{border-left:3px solid #16addb;padding:5px 0 20px 18px;margin:20px 0}
+.event small{color:#77889b}
+footer{text-align:center;background:#061629;color:#aabbd0;padding:30px}
+@media(max-width:700px){
+ nav{display:none;position:absolute;top:70px;left:0;width:100%;background:#c9d8e2;padding:25px;flex-direction:column}
+ nav.open{display:flex}
+ .menu{display:block}
+ .hero{padding-top:85px}
+ .highlights,.cards{grid-template-columns:1fr}
+ .actions{flex-direction:column}
+ .btn{text-align:center}
 }
 </style>
 </head>
-
 <body>
 
 <header>
- <div class="container">
-  <div class="logo">FlexLog</div>
-  <p>Seu objeto, acompanhado em cada etapa.</p>
- </div>
+ <div class="logo"><span class="mark">FL</span> FlexLog</div>
+ <button class="menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+ <nav>
+  <a href="#inicio">Início</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#rastreamento">Rastreamento</a>
+  <a href="#contato">Contato</a>
+ </nav>
 </header>
 
-<main>
-<div class="container">
- <div class="card">
-  <h1>Rastreie sua encomenda</h1>
-  <p>Digite seu código de rastreamento para consultar a situação do objeto.</p>
-
-  <input
-   id="codigo"
-   type="text"
-   placeholder="Digite seu código de rastreamento"
-   autocomplete="off"
-  >
-
-  <button onclick="rastrear()">Consultar encomenda</button>
-
-  <div id="erro" class="erro"></div>
-
-  <div id="resultado">
-   <h2>Detalhes da encomenda</h2>
-   <div class="status" id="situacao"></div>
-   <p id="destino"></p>
-
-   <h3>Histórico de movimentação</h3>
-   <div id="historico"></div>
+<div class="hero" id="inicio">
+ <div class="container">
+  <span class="tag">● Especialistas em carga refrigerada</span>
+  <h1>Transporte especializado em equipamentos de refrigeração</h1>
+  <p>Logística eficiente, segurança e compromisso em cada entrega.</p>
+  <div class="actions">
+   <a class="btn primary" href="#rastreamento">Rastrear encomenda</a>
+   <a class="btn secondary" href="#sobre">Conheça a FlexLog</a>
+  </div>
+  <div class="highlights">
+   <div class="highlight"><strong>Rota planejada</strong><p>ponto a ponto</p></div>
+   <div class="highlight"><strong>Carga refrigerada</strong><p>manuseio especializado</p></div>
+   <div class="highlight"><strong>Entrega segura</strong><p>acompanhamento contínuo</p></div>
   </div>
  </div>
 </div>
-</main>
 
-<footer>
- FlexLog © 2026 - Sistema demonstrativo de rastreamento.
-</footer>
+<section class="light" id="sobre">
+ <div class="container">
+  <h2>Conheça a FlexLog</h2>
+  <p class="subtitle">Soluções em transporte e logística para equipamentos de refrigeração, com organização, cuidado e acompanhamento de cada etapa.</p>
+ </div>
+</section>
+
+<section id="servicos">
+ <div class="container">
+  <h2>Nossos serviços</h2>
+  <p class="subtitle">Soluções pensadas para garantir uma operação organizada e eficiente.</p>
+  <div class="cards">
+   <div class="card"><h3>Transporte especializado</h3><p>Movimentação planejada de equipamentos de refrigeração.</p></div>
+   <div class="card"><h3>Logística segura</h3><p>Organização e acompanhamento das etapas de transporte.</p></div>
+   <div class="card"><h3>Rastreamento</h3><p>Consulte o andamento demonstrativo da sua encomenda.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="light" id="rastreamento">
+ <div class="container">
+  <h2>Rastreamento de encomendas</h2>
+  <p class="subtitle">Acompanhe o andamento da sua entrega.</p>
+  <div class="track">
+   <h3>Consulta de encomenda</h3>
+   <p>Consulte sua encomenda pelo sistema FlexLog.</p>
+   <button onclick="consultar()">Consultar minha encomenda</button>
+   <div class="result" id="resultado">
+    <div class="status">● Objeto em trânsito</div>
+    <h3>Histórico de movimentação</h3>
+    <div class="event">
+     <strong>Encomenda recebida</strong>
+     <small>09/11/2026 — Centro de distribuição</small>
+    </div>
+    <div class="event">
+     <strong>Em processamento</strong>
+     <small>09/11/2026 — Unidade operacional</small>
+    </div>
+    <div class="event">
+     <strong>Objeto em trânsito</strong>
+     <small>09/11/2026 — Transferência entre unidades</small>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="contato">
+ <div class="container">
+  <h2>Entre em contato</h2>
+  <p class="subtitle">FlexLog — Transporte especializado e logística.</p>
+ </div>
+</section>
+
+<footer>FlexLog © 2026 — Todos os direitos reservados.</footer>
 
 <script>
-const encomendas = {
- "BR354790239": {
-  situacao:"Objeto em trânsito",
-  destino:"Destino: Unidade de distribuição",
-  eventos:[
-   {
-    titulo:"Objeto recebido",
-    data:"09/11/2026 - 09:30",
-    local:"Centro de distribuição"
-   },
-   {
-    titulo:"Objeto em trânsito",
-    data:"09/11/2026 - 14:20",
-    local:"Transferência entre unidades"
-   }
-  ]
- }
-};
+const codigoInterno = "BR354790239";
 
-function rastrear(){
- const codigo=document.getElementById("codigo").value
- .trim().toUpperCase();
-
- const resultado=document.getElementById("resultado");
- const erro=document.getElementById("erro");
-
- resultado.style.display="none";
- erro.textContent="";
-
- if(!codigo){
-  erro.textContent="Digite um código para consultar.";
-  return;
- }
-
- const objeto=encomendas[codigo];
-
- if(!objeto){
-  erro.textContent="Código não encontrado. Verifique e tente novamente.";
-  return;
- }
-
- document.getElementById("situacao").textContent=objeto.situacao;
- document.getElementById("destino").textContent=objeto.destino;
-
- document.getElementById("historico").innerHTML=
- objeto.eventos.map(evento=>`
-  <div class="evento">
-   <strong>${evento.titulo}</strong>
-   <small>${evento.data}</small>
-   <p>${evento.local}</p>
-  </div>
- `).join("");
-
- resultado.style.display="block";
+function consultar(){
+ document.getElementById("resultado").style.display="block";
 }
 </script>
-
 </body>
 </html>
